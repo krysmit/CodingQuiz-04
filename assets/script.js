@@ -1,31 +1,24 @@
-var timerEl = document.getElementById("timer");
+var timerEl = document.getElementById("timer"); //for timer countdown
+var msgDiv = document.querySelector("#msg"); //for 'correct' or 'incorrect' message after answer chosen
 
+
+//NEEDS MORE WORK
 // Timer that counts down from 70
-function countdown() {
-  var timeLeft = 70;
 
-  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+function timer() {
+  var timeLeft = 70;
   var timeInterval = setInterval(function () {
-    // As long as the `timeLeft` is greater than 1
     if (timeLeft > 1) {
-      // Set the `textContent` of `timerEl` to show the remaining seconds
-      timerEl.textContent = timeLeft + ' seconds remaining';
-      // Decrement `timeLeft` by 1
       timeLeft--;
     } else if (timeLeft === 1) {
-      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-      timerEl.textContent = timeLeft + ' second remaining';
       timeLeft--;
     } else {
-      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-      timerEl.textContent = '';
-      // Use `clearInterval()` to stop the timer
+      timerEl.textContent = 'boom';
       clearInterval(timeInterval);
     }
   }, 1000);
 }
-
-
+timer();
 
 
 
@@ -56,3 +49,27 @@ function countdown() {
 //2. terminal/bash
 //3. for loops
 //4. console.log
+
+
+
+//building the 'correct' or 'incorrect message after an answer is chosen
+function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
+  }
+
+  chosenAnswer.addEventListener("click", function(event) {
+    event.preventDefault();
+  
+    var correct = document.querySelector("#CorrectAns").value;
+    var incorrect = document.querySelector("#incorrectAns").value;
+  
+    if (chosenAnswer == true) {
+      displayMessage("error", "Incorrect Answer");
+    } else {
+      displayMessage("success", "Correct Answer");
+  
+      localStorage.setItem("correct", correct);
+      localStorage.setItem("incorrect", incorrect);
+    }
+  });
