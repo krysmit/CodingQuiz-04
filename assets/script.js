@@ -1,12 +1,15 @@
 var timerEl = document.getElementById("timer"); //for timer countdown
 var msgDiv = document.querySelector("#msg"); //for 'correct' or 'incorrect' message after answer chosen
+var chosenAnswer //var to collect which answer was chosen by user
+var rootEl = $('#root'); //the quiz box where intro, Qs and As will appear
+var quesEl = $('<h2>');
+var ansEl = $('<p>');
 
 
-//NEEDS MORE WORK
-// Timer that counts down from 70
-
+//NEEDS MORE WORK - countdown working, but not showing
+// Timer that counts down from 60
 function timer() {
-  var timeLeft = 70;
+  var timeLeft = 5;
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timeLeft--;
@@ -22,28 +25,68 @@ timer();
 
 
 
+//Quiz title page
+quesEl.text('Coding Quiz Challenge');
+quesEl.addClass('titleques');
+ansEl.text('Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!');
+ansEl.addClass('bodyansw');
+quesEl.append(ansEl);
+rootEl.append(quesEl);
 
-//Questions
+//questions
+let question = [
+  {
+    "text": "Commonly used data types DO NOT include:",
+    "options": ["1. strings", "2. booleans", "3. alerts", "4. numbers"]
+    "solution": "3. alerts"
+  },
+  {
+    "text": "",
+    "options": ["", "", "", ""]
+    "solution": ""
+  },
+  {
+    "text": "",
+    "options": ["", "", "", ""]
+    "solution": ""
+  },
+  {
+    "text": "The condition in an if/else statement is enclosed with _____.",
+    "options": ["1. quotes", "2. curly brackets", "3. parantheses", "4. square brackets"]
+    "solution": ""
+  },
+]
+
+
+//Q1
 //Commonly used data types DO NOT include:
 //1. strings
 //2. booleans
 //3. alerts
 //4. numbers
+
+//Q2
 //The condition in an if/else statement is enclosed with _____.
 //1. quotes
 //2. curly brackets
 //3. parantheses
 //4. square brackets
+
+//Q3
 //Arrays in JavaScript can be used to store _____.
 //1. numbers and strings
 //2. other arrays
 //3. booleans
 //4. all of the above
+
+//Q4
 //String values must be enclosed within _______ when being assigned to variables.
 //1. commas
 //2. curly brackets
 //3. quotes
 //4. parentheses
+
+//Q5
 //A very useful tool used during development and debugging for printing content to the debugger is:
 //1. JavaScript
 //2. terminal/bash
@@ -69,7 +112,6 @@ function displayMessage(type, message) {
     } else {
       displayMessage("success", "Correct Answer");
   
-      localStorage.setItem("correct", correct);
-      localStorage.setItem("incorrect", incorrect);
+      localStorage.setItem("correct" && "incorect", JSON);
     }
   });

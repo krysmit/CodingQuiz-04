@@ -1,2 +1,23 @@
-/* header needs space between to set them to opposite corners*/
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.topbar {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quizbox {
+    width: 350px;
+    height: 350px;
+    border: black 5px solid;
+}
+
+.titleques {
+    font-size: 25px;
+}
+
+.bodyansw {
+    font-size: 15px;
+}
