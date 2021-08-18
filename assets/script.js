@@ -26,6 +26,7 @@ timer();
 
 
 //Quiz title page
+//how to compile this title page and each question as it's own chunk to hide/display when needed?
 quesEl.text('Coding Quiz Challenge');
 quesEl.addClass('titleques');
 ansEl.text('Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!');
@@ -33,31 +34,17 @@ ansEl.addClass('bodyansw');
 quesEl.append(ansEl);
 rootEl.append(quesEl);
 
+//when button is clicked, next question appears and title page disappears
+$("#hide").click(function(){
+  $("p").hide();
+});
+
+$("#show").click(function(){
+  $("p").show();
+});
+
+
 //questions
-let question = [
-  {
-    "text": "Commonly used data types DO NOT include:",
-    "options": ["1. strings", "2. booleans", "3. alerts", "4. numbers"]
-    "solution": "3. alerts"
-  },
-  {
-    "text": "",
-    "options": ["", "", "", ""]
-    "solution": ""
-  },
-  {
-    "text": "",
-    "options": ["", "", "", ""]
-    "solution": ""
-  },
-  {
-    "text": "The condition in an if/else statement is enclosed with _____.",
-    "options": ["1. quotes", "2. curly brackets", "3. parantheses", "4. square brackets"]
-    "solution": ""
-  },
-]
-
-
 //Q1
 //Commonly used data types DO NOT include:
 //1. strings
@@ -95,23 +82,20 @@ let question = [
 
 
 
+
 //building the 'correct' or 'incorrect message after an answer is chosen
 function displayMessage(type, message) {
     msgDiv.textContent = message;
     msgDiv.setAttribute("class", type);
   }
-
   chosenAnswer.addEventListener("click", function(event) {
     event.preventDefault();
-  
     var correct = document.querySelector("#CorrectAns").value;
     var incorrect = document.querySelector("#incorrectAns").value;
-  
     if (chosenAnswer == true) {
       displayMessage("error", "Incorrect Answer");
     } else {
       displayMessage("success", "Correct Answer");
-  
       localStorage.setItem("correct" && "incorect", JSON);
     }
   });
