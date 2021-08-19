@@ -5,6 +5,7 @@ var rootEl = $('#root'); //the quiz box where intro, Qs and As will appear
 var quesEl = $('<h2>');
 var ansEl = $('<p>');
 var currentQuest = 0
+var answer = document.getElementById("answer");
 var questions = [
   {
     Q: "Commonly used data types DO NOT include:",
@@ -23,6 +24,7 @@ var questions = [
     ans: 3
   }
 ]
+var score = 0;
 var quizbox = document.getElementById("quizbox");
 var question = document.getElementById("question");
 var choice1 = document.getElementById("choice1");
@@ -38,6 +40,12 @@ mainbutton.addEventListener('click', function (event) {
   dispQuest()
 })
 
+
+choice1.addEventListener("click", checkAnswer);
+choice2.addEventListener("click", checkAnswer);
+choice3.addEventListener("click", checkAnswer);
+choice4.addEventListener("click", checkAnswer);
+
 function dispQuest() {
   question.innerText = questions[currentQuest].Q
   choice1.textContent = questions[currentQuest].ch1
@@ -45,15 +53,37 @@ function dispQuest() {
   choice3.innerText = questions[currentQuest].ch3
   choice4.innerText = questions[currentQuest].ch4
 }
+function checkAnswer() {
+  var userAnsw = this.getAttribute("data-value");
+  console.log(userAnsw);
+  if (userAnsw == questions[currentQuest].ans) {
+    answer.innerText="correct";
+    score+=10
+  } else {
+    answer.innerText="incorrect";
+    score-=5
+  }
+  console.log(score)
+  if (currentQuest<questions.length-1) {
+    currentQuest++;
+    dispQuest()
+  }else{
+    console.log("End");
+    quizbox.style.display = "none";
+  }
+}
+//after rnning out of Qs... display highsore area
 
 //NEEDS MORE WORK - countdown working, but not showing
 // Timer that counts down from 60
 function timer() {
-  var timeLeft = 5;
+  var timeLeft = 60;
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
+      timerEl.textContent = timeLeft + ' seconds remaining';
       timeLeft--;
     } else if (timeLeft === 1) {
+      timerEl.textContent = timeLeft + ' second remaining';
       timeLeft--;
     } else {
       timerEl.textContent = 'boom';
@@ -75,20 +105,6 @@ quesEl.append(ansEl);
 rootEl.append(quesEl);
 
 //when button is clicked, next question appears and title page disappears
-
-
-
-$("#hide").click(function () {
-  $("p").hide();
-});
-
-$("#show").click(function () {
-  $("p").show();
-});
-
-
-
-
 
 // Q3
 // Arrays in JavaScript can be used to store _____.
