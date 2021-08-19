@@ -1,9 +1,5 @@
 var timerEl = document.getElementById("timer"); //for timer countdown
-var msgDiv = document.querySelector("#msg"); //for 'correct' or 'incorrect' message after answer chosen
 var chosenAnswer //var to collect which answer was chosen by user
-var rootEl = $('#root'); //the quiz box where intro, Qs and As will appear
-var quesEl = $('<h2>');
-var ansEl = $('<p>');
 var currentQuest = 0
 var answer = document.getElementById("answer");
 var questions = [
@@ -22,10 +18,35 @@ var questions = [
     ch3: "parantheses",
     ch4: "square brackets",
     ans: 3
+  },
+  {
+    Q: "Arrays in JavaScript can be used to store _____.",
+    ch1: "1. numbers and strings",
+    ch2: "2. other arrays",
+    ch3: "3. booleans",
+    ch4: "4. all of the above",
+    ans: 4
+  },
+  {
+    Q: "String values must be enclosed within _______ when being assigned to variables.",
+    ch1: "1. commas",
+    ch2: "2. curly brackets",
+    ch3: "3. quotes",
+    ch4: "4. parentheses",
+    ans: 3
+  },
+  {
+    Q: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    ch1: "1. JavaScript",
+    ch2: "2. terminal/bash",
+    ch3: "3. for loops",
+    ch4: "4. console.log",
+    ans: 4
   }
 ]
 var score = 0;
 var quizbox = document.getElementById("quizbox");
+var titlebox = document.getElementById("titlebox");
 var question = document.getElementById("question");
 var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
@@ -39,7 +60,6 @@ mainbutton.addEventListener('click', function (event) {
   mainbutton.style.display = "none";
   dispQuest()
 })
-
 
 choice1.addEventListener("click", checkAnswer);
 choice2.addEventListener("click", checkAnswer);
@@ -58,10 +78,11 @@ function checkAnswer() {
   console.log(userAnsw);
   if (userAnsw == questions[currentQuest].ans) {
     answer.innerText="correct";
-    score+=10
+    console.log("correct");
   } else {
     answer.innerText="incorrect";
-    score-=5
+    console.log("incorrect");
+    timeLeft-=10;
   }
   console.log(score)
   if (currentQuest<questions.length-1) {
@@ -72,12 +93,15 @@ function checkAnswer() {
     quizbox.style.display = "none";
   }
 }
+
 //after rnning out of Qs... display highsore area
 
-//NEEDS MORE WORK - countdown working, but not showing
+
+
 // Timer that counts down from 60
+document.getElementById("startTimer").addEventListener("click", timer);
+var timeLeft = 60;
 function timer() {
-  var timeLeft = 60;
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timerEl.textContent = timeLeft + ' seconds remaining';
@@ -86,63 +110,11 @@ function timer() {
       timerEl.textContent = timeLeft + ' second remaining';
       timeLeft--;
     } else {
-      timerEl.textContent = 'boom';
+      timerEl.textContent = 'Time Is Up!!!';
       clearInterval(timeInterval);
     }
   }, 1000);
-}
-timer();
+};
 
 
 
-//Quiz title page
-//how to compile this title page and each question as it's own chunk to hide/display when needed?
-quesEl.text('Coding Quiz Challenge');
-quesEl.addClass('titleques');
-ansEl.text('Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!');
-ansEl.addClass('bodyansw');
-quesEl.append(ansEl);
-rootEl.append(quesEl);
-
-//when button is clicked, next question appears and title page disappears
-
-// Q3
-// Arrays in JavaScript can be used to store _____.
-// 1. numbers and strings
-// 2. other arrays
-// 3. booleans
-// 4. all of the above
-
-// Q4
-// String values must be enclosed within _______ when being assigned to variables.
-// 1. commas
-// 2. curly brackets
-// 3. quotes
-// 4. parentheses
-
-// Q5
-// A very useful tool used during development and debugging for printing content to the debugger is:
-// 1. JavaScript
-// 2. terminal/bash
-// 3. for loops
-// 4. console.log
-
-
-
-
-//building the 'correct' or 'incorrect message after an answer is chosen
-/*function displayMessage(type, message) {
-    msgDiv.textContent = message;
-    msgDiv.setAttribute("class", type);
-  }
-  chosenAnswer.addEventListener("click", function(event) {
-    event.preventDefault();
-    var correct = document.querySelector("#CorrectAns").value;
-    var incorrect = document.querySelector("#incorrectAns").value;
-    if (chosenAnswer == true) {
-      displayMessage("error", "Incorrect Answer");
-    } else {
-      displayMessage("success", "Correct Answer");
-      localStorage.setItem("correct" && "incorect", JSON);
-    }
-  }); */

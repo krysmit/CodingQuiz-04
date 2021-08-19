@@ -19,16 +19,14 @@
 
 <body>
 <!--This main information box will be in the background of the screen as boxes with Qs appear on top of it     -->
-
-
 <!--js and css functions will attach to this div to show the questions-->
-<div id="root" class="quizbox">
-    <!--when an anser is chosen, correct or wrong show at the bottom, then it moves to a new screen-->
+<div class="titlebox">
+<h1 class="titleques">Coding Quiz Challenge</h1>
+<p class="bodyansw">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+<button id="startTimer" class="mainbutton">Start Quiz</button>
 </div>
-<div>   
-    <button class="mainbutton">Start Quiz</button>
-</div>
-<div id ="quizbox">
+
+<div id ="quizbox" class="quizbox">
     <h4 id="question"></h4>
     <button id="choice1" data-value="1"></button>
     <button id="choice2" data-value="2"></button>
@@ -37,7 +35,7 @@
 <p id="answer"></p>
 </div>
 <div id="userscore">
-    <input>
+    <input></input>
     <button></button>
 </div>
 
@@ -47,15 +45,15 @@
     <!--the player will enter their initials into a box, click enter, and a high score page will apear-->
 </div>
 
-<!--js and css functions will attach to this div to show a high score page-->
+<!--js and css functions will attach to this div to show a high score page
 <div>A future high score page to appear
-    <!--show stored scores here-->
-    <!--'go back' button to restart the game-->
+    show stored scores here
+    go back button to restart the game
     <button>Go Back</button>
-    <!--'clear highscores' button to remove all stored data-->
+    'clear highscores' button to remove all stored data
     <button>Clear Highscores</button>
 </div> 
-
+-->
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="./assets/script.js"></script>
