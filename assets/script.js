@@ -47,12 +47,15 @@ var questions = [
 var score = 0;
 var quizbox = document.getElementById("quizbox");
 var titlebox = document.getElementById("titlebox");
+var highscorebox = document.getElementById("highscorebox");
+var userscorebox = document.getElementById("userscore");
 var question = document.getElementById("question");
 var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
-var mainbutton = document.querySelector(".mainbutton")
+var mainbutton = document.querySelector(".mainbutton");
+
 quizbox.style.display = "none";
 mainbutton.addEventListener('click', function (event) {
   event.preventDefault()
@@ -60,6 +63,9 @@ mainbutton.addEventListener('click', function (event) {
   mainbutton.style.display = "none";
   dispQuest()
 })
+
+userscorebox.style.display = "none";
+highscorebox.style.display = "none";
 
 choice1.addEventListener("click", checkAnswer);
 choice2.addEventListener("click", checkAnswer);
@@ -78,9 +84,11 @@ function checkAnswer() {
   console.log(userAnsw);
   if (userAnsw == questions[currentQuest].ans) {
     answer.innerText="correct";
+    answer.style.fontStyle = "italic";
     console.log("correct");
   } else {
     answer.innerText="incorrect";
+    answer.style.fontStyle = "italic";
     console.log("incorrect");
     timeLeft-=10;
   }
@@ -94,9 +102,10 @@ function checkAnswer() {
   }
 }
 
-//after rnning out of Qs... display highsore area
 
-
+if (questions <= 0) {
+  userscorebox.style.display = "block";
+}
 
 // Timer that counts down from 60
 document.getElementById("startTimer").addEventListener("click", timer);

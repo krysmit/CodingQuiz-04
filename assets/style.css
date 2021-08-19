@@ -6,24 +6,41 @@ header {
     margin-bottom: 10%;
 }
 
+.scorebutt {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.qbutt {
+    cursor:pointer;
+    background: cornflowerblue;
+    outline: none;
+    border: black 5px;
+    border-radius: 5px;
+}
+
 .topbar {
     font-size: 15px;
     display: flex;
     justify-content: space-between;
 }
 
-.quizbox {
+.quizbox,
+.titlebox,
+.fancyscore
+.initialspage {
     width: 400px;
     height: 200px;
-    margin: auto;
     border: black 5px solid;
+    position: absolute;
+    transform: translate (-50%, -50%);
 }
 
-.titlebox {
-    width: 400px;
-    height: 200px;
-    margin: auto;
-    border: black 5px solid;
+.quizbox,
+.fancyscore,
+.initialspage {
+    background: white;
 }
 
 .titleques {
@@ -38,4 +55,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor:pointer;
+    background: cornflowerblue;
+    outline: none;
+    border: black 5px;
+    border-radius: 5px;
+    padding-inline: 10px;
+
 }
