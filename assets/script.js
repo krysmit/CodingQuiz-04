@@ -4,14 +4,47 @@ var chosenAnswer //var to collect which answer was chosen by user
 var rootEl = $('#root'); //the quiz box where intro, Qs and As will appear
 var quesEl = $('<h2>');
 var ansEl = $('<p>');
+var currentQuest = 0
+var questions = [
+  {
+    Q: "Commonly used data types DO NOT include:",
+    ch1: "strings",
+    ch2: "booleans",
+    ch3: "alerts",
+    ch4: "numbers",
+    ans: 3
+  },
+  {
+    Q: "The condition in an if/else statement is enclosed with _____.",
+    ch1: "quotes",
+    ch2: "curly brackets",
+    ch3: "parantheses",
+    ch4: "square brackets",
+    ans: 3
+  }
+]
 var quizbox = document.getElementById("quizbox");
 var question = document.getElementById("question");
-var choice1 = document.getElementById("choice-1");
-var choice2 = document.getElementById("choice-2");
-var choice3 = document.getElementById("choice-3");
-var choice4 = document.getElementById("choice-4");
+var choice1 = document.getElementById("choice1");
+var choice2 = document.getElementById("choice2");
+var choice3 = document.getElementById("choice3");
+var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton")
 quizbox.style.display = "none";
+mainbutton.addEventListener('click', function (event) {
+  event.preventDefault()
+  quizbox.style.display = "block";
+  mainbutton.style.display = "none";
+  dispQuest()
+})
+
+function dispQuest() {
+  question.innerText = questions[currentQuest].Q
+  choice1.textContent = questions[currentQuest].ch1
+  choice2.innerHTML = questions[currentQuest].ch2
+  choice3.innerText = questions[currentQuest].ch3
+  choice4.innerText = questions[currentQuest].ch4
+}
 
 //NEEDS MORE WORK - countdown working, but not showing
 // Timer that counts down from 60
@@ -45,33 +78,17 @@ rootEl.append(quesEl);
 
 
 
-$("#hide").click(function(){
+$("#hide").click(function () {
   $("p").hide();
 });
 
-$("#show").click(function(){
+$("#show").click(function () {
   $("p").show();
 });
 
 
-var questions = [
-  {
-Q1:"Commonly used data types DO NOT include:",
-ch1:"strings",
-ch2:"booleans",
-ch3:"alerts",
-ch4:"numbers",
-ans:3
-  },
-{
-Q2:"The condition in an if/else statement is enclosed with _____.",
-ch1:"quotes",
-ch2:"curly brackets",
-ch3:"parantheses",
-ch4:"square brackets",
-ans:3
-}
-]
+
+
 
 // Q3
 // Arrays in JavaScript can be used to store _____.
@@ -98,7 +115,7 @@ ans:3
 
 
 //building the 'correct' or 'incorrect message after an answer is chosen
-function displayMessage(type, message) {
+/*function displayMessage(type, message) {
     msgDiv.textContent = message;
     msgDiv.setAttribute("class", type);
   }
@@ -112,4 +129,4 @@ function displayMessage(type, message) {
       displayMessage("success", "Correct Answer");
       localStorage.setItem("correct" && "incorect", JSON);
     }
-  });
+  }); */

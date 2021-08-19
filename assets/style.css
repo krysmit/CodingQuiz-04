@@ -13,10 +13,10 @@ header {
 }
 
 .quizbox {
-    width: 500px;
-    height: 350px;
+    width: 400px;
+    height: 200px;
     margin: auto;
-    /*border: black 5px solid;*/
+    border: black 5px solid;
 }
 
 .titleques {
