@@ -28,8 +28,8 @@ header {
 
 .quizbox,
 .titlebox,
-.fancyscore
-.initialspage {
+.fancyscore,
+.subinitbox {
     width: 400px;
     height: 200px;
     border: black 5px solid;
@@ -39,7 +39,7 @@ header {
 
 .quizbox,
 .fancyscore,
-.initialspage {
+.subinitbox {
     background: white;
 }
 

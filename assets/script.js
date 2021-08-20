@@ -44,28 +44,31 @@ var questions = [
     ans: 4
   }
 ]
+
 var score = 0;
 var quizbox = document.getElementById("quizbox");
 var titlebox = document.getElementById("titlebox");
 var highscorebox = document.getElementById("highscorebox");
-var userscorebox = document.getElementById("userscore");
+var subinitbox = document.getElementById("subinitbox");
 var question = document.getElementById("question");
 var choice1 = document.getElementById("choice1");
 var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton");
+var submitbutton = document.querySelector(".submitbutton");
+
+subinitbox.style.display = "none";
+highscorebox.style.display = "none";
 
 quizbox.style.display = "none";
 mainbutton.addEventListener('click', function (event) {
-  event.preventDefault()
+  event.preventDefault();
   quizbox.style.display = "block";
   mainbutton.style.display = "none";
   dispQuest()
-})
+});
 
-userscorebox.style.display = "none";
-highscorebox.style.display = "none";
 
 choice1.addEventListener("click", checkAnswer);
 choice2.addEventListener("click", checkAnswer);
@@ -79,6 +82,7 @@ function dispQuest() {
   choice3.innerText = questions[currentQuest].ch3
   choice4.innerText = questions[currentQuest].ch4
 }
+
 function checkAnswer() {
   var userAnsw = this.getAttribute("data-value");
   console.log(userAnsw);
@@ -97,15 +101,23 @@ function checkAnswer() {
     currentQuest++;
     dispQuest()
   }else{
-    console.log("End");
+    console.log("end of quiz");
     quizbox.style.display = "none";
+    subinitbox.style.display = "block"
   }
 }
 
 
-if (questions <= 0) {
-  userscorebox.style.display = "block";
-}
+submitbutton.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var userscore = {
+    //timeLeft + "initials"
+  };
+  console.log(userscore);
+  localStorage.setItem("userscore", JSON.stringify(userscore));
+  
+});
 
 // Timer that counts down from 60
 document.getElementById("startTimer").addEventListener("click", timer);
