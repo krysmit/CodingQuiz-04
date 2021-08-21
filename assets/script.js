@@ -57,6 +57,7 @@ var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton");
 var submitbutton = document.getElementById("submitbutton");
+var userscore = 0;
 
 //hide the initial and score submittion - hide the highscore box
 subinitbox.style.display = "none";
@@ -105,7 +106,8 @@ function checkAnswer() {
     currentQuest++;
     dispQuest()
   }else{
-    console.log(timeLeft);
+    userscore = timeLeft;
+    console.log("userscore: ", userscore);
     quizbox.style.display = "none";
     subinitbox.style.display = "block"
   }
@@ -116,10 +118,9 @@ function checkAnswer() {
 
 submitbutton.addEventListener("click", function(event) { 
   event.preventDefault();
-  var userscore = timeLeft;
 
     var initialscore = {
-      score: userscore.value,
+      score: userscore,
       initial: initials.value.trim()
     };
     
