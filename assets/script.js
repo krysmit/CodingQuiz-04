@@ -57,6 +57,12 @@ var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton");
 var submitbutton = document.querySelector(".submitbutton");
+var userscore = {
+  //timeLeft + "initials"
+};
+
+
+
 
 subinitbox.style.display = "none";
 highscorebox.style.display = "none";
@@ -108,13 +114,10 @@ function checkAnswer() {
 }
 
 
-submitbutton.addEventListener("click", function(event) {
-  event.preventDefault();
-
-  var userscore = {
-    //timeLeft + "initials"
-  };
-  console.log(userscore);
+submitbutton.addEventListener("click", function() {
+  //event.preventDefault();
+  console.log("hi there");
+  //console.log(userscore);
   localStorage.setItem("userscore", JSON.stringify(userscore));
   
 });
