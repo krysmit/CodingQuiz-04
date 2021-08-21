@@ -2,6 +2,7 @@ var timerEl = document.getElementById("timer"); //for timer countdown
 var chosenAnswer //var to collect which answer was chosen by user
 var currentQuest = 0
 var answer = document.getElementById("answer");
+//turning the questions into a variable
 var questions = [
   {
     Q: "Commonly used data types DO NOT include:",
@@ -44,7 +45,6 @@ var questions = [
     ans: 4
   }
 ]
-
 var initials = document.getElementById("initials");
 var quizbox = document.getElementById("quizbox");
 var titlebox = document.getElementById("titlebox");
@@ -56,12 +56,13 @@ var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton");
-var submitbutton = document.querySelector("submitbutton");
+var submitbutton = document.getElementById("submitbutton");
 
-
+//hide the initial and score submittion - hide the highscore box
 subinitbox.style.display = "none";
 highscorebox.style.display = "none";
 
+//quiz page appears after clicking start
 quizbox.style.display = "none";
 mainbutton.addEventListener('click', function (event) {
   event.preventDefault();
@@ -76,6 +77,7 @@ choice2.addEventListener("click", checkAnswer);
 choice3.addEventListener("click", checkAnswer);
 choice4.addEventListener("click", checkAnswer);
 
+//display the questions
 function dispQuest() {
   question.innerText = questions[currentQuest].Q
   choice1.textContent = questions[currentQuest].ch1
@@ -84,47 +86,46 @@ function dispQuest() {
   choice4.innerText = questions[currentQuest].ch4
 }
 
+//a function to check if the questions were answered correctly
 function checkAnswer() {
   var userAnsw = this.getAttribute("data-value");
   console.log(userAnsw);
   if (userAnsw == questions[currentQuest].ans) {
     answer.innerText="correct";
     answer.style.fontStyle = "italic";
-    console.log("correct");
+    console.log("correct answer");
   } else {
     answer.innerText="incorrect";
     answer.style.fontStyle = "italic";
-    console.log("incorrect");
+    console.log("incorrect answer");
     timeLeft-=10;
   }
-  console.log(score)
+  console.log(timeLeft);
   if (currentQuest<questions.length-1) {
     currentQuest++;
     dispQuest()
   }else{
-    
     console.log(timeLeft);
     quizbox.style.display = "none";
     subinitbox.style.display = "block"
   }
 }
 
-
 //function that pulls and creates score from timer
-
-var score = timeLeft;
+var userscore = timeLeft;
+console.log(userscore);
 submitbutton.addEventListener("click", function(event) { 
   event.preventDefault();
     
     var initialscore = {
-      score: score.value,
-      initial: initial.value.trim()
+      score: userscore.value,
+      initial: initials.value.trim()
     };
     
     localStorage.setItem("initialscore", JSON.stringify(initialscore));
     renderMessage();
 
-
+    console.log(timeLeft);
 
     });
 
@@ -146,6 +147,5 @@ function timer() {
     }
   }, 1000);
 };
-
 
 
