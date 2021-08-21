@@ -1,5 +1,5 @@
-var timerEl = document.getElementById("timer"); //for timer countdown
-var chosenAnswer //var to collect which answer was chosen by user
+var timerEl = document.getElementById("timer");
+var chosenAnswer
 var currentQuest = 0
 var answer = document.getElementById("answer");
 //turning the questions into a variable
@@ -58,7 +58,9 @@ var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton");
 var highscorebutt = document.querySelector(".scorebutt")
 var submitbutton = document.getElementById("submitbutton");
+var restartbutton = document.getElementById("restart");
 var userscore = 0;
+var displayscore = document.getElementById("displayscore");
 
 //hide the initial and score submittion - hide the highscore box
 subinitbox.style.display = "none";
@@ -69,11 +71,11 @@ quizbox.style.display = "none";
 mainbutton.addEventListener('click', function (event) {
   event.preventDefault();
   quizbox.style.display = "block";
-  mainbutton.style.display = "none";
+  //mainbutton.style.display = "none";
   dispQuest()
 });
 
-
+//adds an event listener to each question button
 choice1.addEventListener("click", checkAnswer);
 choice2.addEventListener("click", checkAnswer);
 choice3.addEventListener("click", checkAnswer);
@@ -117,23 +119,22 @@ function checkAnswer() {
 //function that pulls and creates score from timer
 submitbutton.addEventListener("click", function(event) { 
   event.preventDefault();
-
     var initialscore = {
       score: userscore,
       initial: initials.value.trim()
     };
-    
+    //storing the information locally
     localStorage.setItem("initialscore", JSON.stringify(initialscore));
-
-    console.log(timeLeft);
 
     subinitbox.style.display = "none";
     highscorebox.style.display = "block";
     timerEl.style.display = "none";
-
+    console.log("THE SCORE: ", initialscore);
+    
     });
 
-    highscorebutt.addEventListener("click", function(event) { 
+//the button on the highscore page to go back to the start page    
+highscorebutt.addEventListener("click", function(event) { 
       event.preventDefault();
       highscorebox.style.display = "block";
         });

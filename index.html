@@ -51,10 +51,10 @@
 <div id="highscorebox" class="fancyscore">
     <h4 class = "titleques">Highscores</h4>
     <ul style="list-style: none;">
-        <li class="textsizer">1. <!--initials and score display--></li>
+        <li id="displayscore" class="textsizer"></li>
     </ul>
     <div id="userscore">
-        <button id="restart">Go Back</button>
+        <button onClick="window.location.reload();" id="restart">Go Back</button>
         <button id="clearscore">Clear Highscores</button>
     </div>
 </div>
