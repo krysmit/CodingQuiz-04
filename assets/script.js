@@ -56,6 +56,7 @@ var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton");
+var highscorebutt = document.querySelector(".scorebutt")
 var submitbutton = document.getElementById("submitbutton");
 var userscore = 0;
 
@@ -114,8 +115,6 @@ function checkAnswer() {
 }
 
 //function that pulls and creates score from timer
-
-
 submitbutton.addEventListener("click", function(event) { 
   event.preventDefault();
 
@@ -125,11 +124,19 @@ submitbutton.addEventListener("click", function(event) {
     };
     
     localStorage.setItem("initialscore", JSON.stringify(initialscore));
-    //renderMessage();
 
     console.log(timeLeft);
 
+    subinitbox.style.display = "none";
+    highscorebox.style.display = "block";
+    timerEl.style.display = "none";
+
     });
+
+    highscorebutt.addEventListener("click", function(event) { 
+      event.preventDefault();
+      highscorebox.style.display = "block";
+        });
 
 
 // Timer that counts down from 60
