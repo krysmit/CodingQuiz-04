@@ -6,6 +6,19 @@ header {
     margin-bottom: 10%;
 }
 
+#question {
+    font-size: 15px;
+}
+
+.centering {
+    display: flex;
+    justify-content: center;
+}
+
+.textsizer {
+    font-size: 12px;
+}
+
 .scorebutt {
     cursor: pointer;
     background: transparent;
@@ -34,7 +47,7 @@ header {
     height: 200px;
     border: black 5px solid;
     position: absolute;
-    transform: translate (-50%, -50%);
+    /* transform: translate (-50%, -50%); */
 }
 
 .quizbox,

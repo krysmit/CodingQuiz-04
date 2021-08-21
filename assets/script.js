@@ -146,6 +146,7 @@ function timer() {
     
     }else {
       timerEl.textContent = 'Time Is Up!!!';
+      subinitbox.style.display = "block";
       clearInterval(timeInterval);
     }
   }, 1000);

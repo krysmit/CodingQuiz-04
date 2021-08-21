@@ -18,6 +18,8 @@
 </header>
 
 <body>
+
+<div class="centering">
 <!--Title page for the game-->
 <div class="titlebox">
 <h1 class="titleques">Coding Quiz Challenge</h1>
@@ -27,7 +29,7 @@
 
 <!--Quiz text boxes-->
 <div id ="quizbox" class="quizbox">
-    <h4 id="question"></h4>
+    <h2 id="question"></h2>
     <button class= "qbutt" id="choice1" data-value="1"></button>
     <button class= "qbutt" id="choice2" data-value="2"></button>
     <button class= "qbutt" id="choice3" data-value="3"></button>
@@ -37,21 +39,27 @@
 
 <!--Game over and submit your initials-->
 <div id="subinitbox" class="subinitbox">
-    <label for="name">Name:</label>
-    <input id="initials" type="text" placeholder="Enter Initials:"></input>
+    <h3 class="titleques">Game Over</h3>
+    <p class="textsizer">Enter your initials below to save your score:</p>
+    <label class="textsizer" for="name">Name:</label>
+    <input id="initials" type="text" class="textsizer" placeholder="Enter Initials"></input>
     <button id="submitbutton" class="qbutt">Submit</button>
 </div>
 
 
 <!--The Highscore Page-->
 <div id="highscorebox" class="fancyscore">
+    <h4 class = "titleques">Highscores</h4>
+    <ul style="list-style: none;">
+        <li class="textsizer">1. <!--initials and score display--></li>
+    </ul>
     <div id="userscore">
         <button id="restart">Go Back</button>
         <button id="clearscore">Clear Highscores</button>
     </div>
 </div>
 
-
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="./assets/script.js"></script>
