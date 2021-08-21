@@ -112,18 +112,19 @@ function checkAnswer() {
 }
 
 //function that pulls and creates score from timer
-var userscore = timeLeft;
-console.log(userscore);
+
+
 submitbutton.addEventListener("click", function(event) { 
   event.preventDefault();
-    
+  var userscore = timeLeft;
+
     var initialscore = {
       score: userscore.value,
       initial: initials.value.trim()
     };
     
     localStorage.setItem("initialscore", JSON.stringify(initialscore));
-    renderMessage();
+    //renderMessage();
 
     console.log(timeLeft);
 
@@ -141,7 +142,9 @@ function timer() {
     } else if (timeLeft === 1) {
       timerEl.textContent = timeLeft + ' second remaining';
       timeLeft--;
-    } else {
+    } else if (questions <= 0) {
+    
+    }else {
       timerEl.textContent = 'Time Is Up!!!';
       clearInterval(timeInterval);
     }
