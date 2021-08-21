@@ -45,7 +45,7 @@ var questions = [
   }
 ]
 
-var score = 0;
+var initials = document.getElementById("initials");
 var quizbox = document.getElementById("quizbox");
 var titlebox = document.getElementById("titlebox");
 var highscorebox = document.getElementById("highscorebox");
@@ -56,12 +56,7 @@ var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
 var mainbutton = document.querySelector(".mainbutton");
-var submitbutton = document.querySelector(".submitbutton");
-var userscore = {
-  //timeLeft + "initials"
-};
-
-
+var submitbutton = document.querySelector("submitbutton");
 
 
 subinitbox.style.display = "none";
@@ -107,20 +102,32 @@ function checkAnswer() {
     currentQuest++;
     dispQuest()
   }else{
-    console.log("end of quiz");
+    
+    console.log(timeLeft);
     quizbox.style.display = "none";
     subinitbox.style.display = "block"
   }
 }
 
 
-submitbutton.addEventListener("click", function() {
-  //event.preventDefault();
-  console.log("hi there");
-  //console.log(userscore);
-  localStorage.setItem("userscore", JSON.stringify(userscore));
-  
-});
+//function that pulls and creates score from timer
+
+var score = timeLeft;
+submitbutton.addEventListener("click", function(event) { 
+  event.preventDefault();
+    
+    var initialscore = {
+      score: score.value,
+      initial: initial.value.trim()
+    };
+    
+    localStorage.setItem("initialscore", JSON.stringify(initialscore));
+    renderMessage();
+
+
+
+    });
+
 
 // Timer that counts down from 60
 document.getElementById("startTimer").addEventListener("click", timer);
