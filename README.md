@@ -1,8 +1,8 @@
 # CodingQuiz-04
 ## Deployed Website
-
+https://krysmit.github.io/CodingQuiz-04/
 ## GitHub Repository
-
+https://github.com/krysmit/CodingQuiz-04
 
 ### Project Summary
 This project was to build a coding quiz so that students can test their coding knowledge against their peers. The rules of the game are given on the opening page. The time left over at the end is the user's score for the game.
