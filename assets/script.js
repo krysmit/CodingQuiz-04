@@ -116,22 +116,25 @@ function checkAnswer() {
   }
 }
 
+
 //function that pulls and creates score from timer
 submitbutton.addEventListener("click", function(event) { 
   event.preventDefault();
 
-    var initialscore = {
-      score: userscore,
-      initial: initials.value.trim()
-    };
+  var initialscore = {
+    score: userscore,
+    initial: initials.value.trim()
+  };
 
     subinitbox.style.display = "none";
     highscorebox.style.display = "block";
     timerEl.style.display = "none";
     console.log("THE SCORE: ", initialscore);
-    displayscore.textContent = initialscore;
+    //displayscore.textContent = initialscore;
     
     });
+
+
 
 //the button on the highscore page to go back to the start page    
 highscorebutt.addEventListener("click", function(event) { 
