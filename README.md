@@ -7,7 +7,7 @@
 ### Project Summary
 This project was to build a coding quiz so that students can test their coding knowledge against their peers. The rules of the game are given on the opening page. The time left over at the end is the user's score for the game.
 
-![Screen shot of the start page for a coding quiz.]()
+![screenshot of the start page to a code quiz](codequizscreenshot.png)
 
 ### Functions of this page that meet the critera:
 * When the user clicks on the start button, the timer starts and the first questions is displayed
