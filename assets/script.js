@@ -130,7 +130,7 @@ submitbutton.addEventListener("click", function(event) {
     highscorebox.style.display = "block";
     timerEl.style.display = "none";
     console.log("THE SCORE: ", initialscore);
-    //displayscore.textContent = initialscore;
+    displayscore.textContent = initialscore;
     
     });
 
