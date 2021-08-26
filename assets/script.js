@@ -2,6 +2,7 @@ var timerEl = document.getElementById("timer");
 var chosenAnswer
 var currentQuest = 0
 var answer = document.getElementById("answer");
+var currentscore = document.getElementById("currentscore")
 //turning the questions into a variable
 var questions = [
   {
@@ -113,6 +114,7 @@ function checkAnswer() {
     console.log("userscore: ", userscore);
     quizbox.style.display = "none";
     subinitbox.style.display = "block"
+    currentscore.textContent = userscore
   }
 }
 
@@ -125,13 +127,19 @@ submitbutton.addEventListener("click", function(event) {
     score: userscore,
     initial: initials.value.trim()
   };
-
+   var scoreHistory = JSON.parse(localStorage.getItem("codequiz")) || []
+   scoreHistory.push(initialscore)
+    localStorage.setItem ("codequiz", JSON.stringify(scoreHistory));
     subinitbox.style.display = "none";
     highscorebox.style.display = "block";
     timerEl.style.display = "none";
     console.log("THE SCORE: ", initialscore);
-    displayscore.textContent = initialscore;
-    
+    var HTMLcontent = ''
+    for(let i=0;i<scoreHistory.length;i++){
+    HTMLcontent += `<p>
+    User:${scoreHistory[i].initial}  /  Score:${scoreHistory[i].score}</p>`
+    }
+    displayscore.innerHTML = HTMLcontent;
     });
 
 
@@ -140,6 +148,13 @@ submitbutton.addEventListener("click", function(event) {
 highscorebutt.addEventListener("click", function(event) { 
       event.preventDefault();
       highscorebox.style.display = "block";
+      var scoreHistory = JSON.parse(localStorage.getItem("codequiz")) || []
+    var HTMLcontent = ''
+    for(let i=0;i<scoreHistory.length;i++){
+    HTMLcontent += `<p>
+    User:${scoreHistory[i].initial}  /  Score:${scoreHistory[i].score}</p>`
+    }
+    displayscore.innerHTML = HTMLcontent;
         });
 
 
